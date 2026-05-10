@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Angular SSR Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=production
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - forensic-gan
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # FastAPI Python Backend
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./aot-gan-model:/app/aot-gan-model
+    environment:
+      - DEVICE=cuda  # Change to cpu if CUDA not available
+      - LOG_LEVEL=INFO
+    networks:
+      - forensic-gan
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  forensic-gan:
+    driver: bridge
+
+volumes:
+  models:
+  aot-gan-model:

@@ -1,0 +1,25 @@
+# FastAPI & async framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# PyTorch & computer vision (CPU by default, change to gpu if needed)
+torch==2.2.0
+torchvision==0.17.0
+# For GPU support, use: torch-cuda >= 2.2.0
+
+# Image processing
+Pillow==10.1.0
+opencv-python==4.8.1.78
+numpy==1.24.3
+scipy==1.11.4
+
+# Metrics & utilities
+scikit-image==0.22.0
+tqdm==4.66.1
+
+# CORS & middleware
+python-dotenv==1.0.0
+
+# Logging & monitoring
+structlog==24.1.0

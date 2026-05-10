@@ -1,0 +1,64 @@
+# Python
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+dist/
+build/
+frontend/dist/
+frontend/.angular/
+
+# Backend cache
+backend/.cache/
+backend/*.egg-info/
+
+# Models / weights
+models/
+*.pth
+*.pt
+*.pkl
+
+# Environment variables
+.env
+.env.local
+.env.prod
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temp
+temp/
+tmp/
+*.tmp
+
+# Coverage / tests
+coverage/
+test-results/
+
+# Docker
+docker-compose.override.yml
+
+*.zip
